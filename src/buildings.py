@@ -8,6 +8,11 @@ class Building:
         self.destroyed = True
         if self.type == 'wall':
             self.V.remove_wall(self)
+            if self.level >= 3:
+                troops = barbarians + archers + starchers
+                for trp in troops:
+                    if abs(trp.position[0] - self.position[0]) <= 2 and abs(trp.position[1] - self.position[1]) <= 2:
+                        trp.deal_damage(200)
         elif self.type == 'hut':
             self.V.remove_hut(self)
         elif self.type == 'cannon':
@@ -25,8 +30,8 @@ class Hut(Building):
         self.dimensions = (2, 2)
         self.V = V
         self.destroyed = False
-        self.health = 40
-        self.max_health = 40
+        self.health = 40 + 10 * level
+        self.max_health = 40 + 10 * level
         self.type = 'hut'
 
 
@@ -37,11 +42,11 @@ class Cannon(Building):
         self.dimensions = (2, 2)
         self.V = V
         self.destroyed = False
-        self.health = 60
-        self.max_health = 60
+        self.health = 60 + 30 * level
+        self.max_health = 60 + 30 * level
         self.type = 'cannon'
-        self.attack = 5
-        self.attack_radius = 5
+        self.attack = 4 + level
+        self.attack_radius = 5 + (level / 2)
         self.isShooting = False
 
     def scan_for_targets(self, King):
@@ -59,17 +64,6 @@ class Cannon(Building):
                 self.isShooting = True
                 self.attack_target(starch)
                 return
-
-        # for barb in barbarians:
-        #     if (barb.position[0] - self.position[0])**2 + (barb.position[1] - self.position[1])**2 <= self.attack_radius**2:
-        #         self.isShooting = True
-        #         self.attack_target(barb)
-        #         return
-        # for dragon in dragons:
-        #     if (dragon.position[0] - self.position[0])**2 + (dragon.position[1] - self.position[1])**2 <= self.attack_radius**2:
-        #         self.isShooting = True
-        #         self.attack_target(dragon)
-        #         return
 
         if King.alive == False:
             return
@@ -91,8 +85,8 @@ class Wall(Building):
         self.dimensions = (1, 1)
         self.V = V
         self.destroyed = False
-        self.health = 20
-        self.max_health = 20
+        self.health = 100 + 40 * level
+        self.max_health = 100 + 40 * level
         self.type = 'wall'
 
 
@@ -103,8 +97,8 @@ class TownHall(Building):
         self.dimensions = (4, 3)
         self.V = V
         self.destroyed = False
-        self.health = 100
-        self.max_health = 100
+        self.health = 80 + 20 * level
+        self.max_health = 80 + 20 * level
         self.type = 'townhall'
 
 
@@ -115,11 +109,11 @@ class WizardTower(Building):
         self.dimensions = (1, 1)
         self.V = V
         self.destroyed = False
-        self.health = 60
-        self.max_health = 60
+        self.health = 60 + 30 * level
+        self.max_health = 60 + 30 * level
         self.type = 'wizardtower'
-        self.attack = 5
-        self.attack_radius = 5
+        self.attack = 4 + level
+        self.attack_radius = 5 + (level / 2)
         self.isShooting = False
 
     def scan_for_targets(self, King):

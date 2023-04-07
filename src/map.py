@@ -321,9 +321,9 @@ def printMap(V):
         a= 2*hlr.position[0]
         b = 2*hlr.position[1]
         map_matrix[a][b] = hlrColor(hlr) + Fore.BLACK + 'HE'
-        map_matrix[a+1][b] = hlrColor(hlr) + Fore.BLACK + 'LE'
-        map_matrix[a][b+1] = hlrColor(hlr) + Fore.BLACK + 'A'
-        map_matrix[a+1][b+1] = hlrColor(hlr) + Fore.BLACK + 'R'
+        map_matrix[a+1][b] = hlrColor(hlr) + Fore.BLACK + ' L'
+        map_matrix[a][b+1] = hlrColor(hlr) + Fore.BLACK + 'A '
+        map_matrix[a+1][b+1] = hlrColor(hlr) + Fore.BLACK + 'ER'
 
 
 

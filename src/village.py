@@ -31,7 +31,7 @@ class Village:
         self.cannon_objs = {}
         self.wizard_tower_objs = {}
         self.wall_objs = {}
-        self.town_hall_obj = bd.TownHall(self.town_hall, self)
+        self.town_hall_obj = bd.TownHall(self.town_hall, self, 3)
         self.map = self.generate_map()             # map of the village
 
     def generate_map(self):
@@ -42,7 +42,7 @@ class Village:
         for spawn_point in self.spawn_points:
             map[spawn_point[0]][spawn_point[1]] = pt.SPAWN
         for hut in self.huts:                                           # hut is 2x2
-            hut_obj = bd.Hut(hut, self)
+            hut_obj = bd.Hut(hut, self, 3)
             self.hut_objs[hut] = hut_obj
             map[hut[0]][hut[1]] = pt.HUT + ":" + \
                 str(hut[0]) + ":" + str(hut[1])
@@ -53,39 +53,39 @@ class Village:
             map[hut[0]+1][hut[1]+1] = pt.HUT + \
                 ":" + str(hut[0]) + ":" + str(hut[1])
         for wall in self.walls_top:                                     # wall is 1x1
-            wall_obj = bd.Wall(wall, self)
+            wall_obj = bd.Wall(wall, self, 3)
             self.wall_objs[wall] = wall_obj
             map[wall[0]][wall[1]] = pt.WALL_TOP
         for wall in self.walls_bottom:
-            wall_obj = bd.Wall(wall, self)
+            wall_obj = bd.Wall(wall, self, 3)
             self.wall_objs[wall] = wall_obj
             map[wall[0]][wall[1]] = pt.WALL_BOTTOM
         for wall in self.walls_left:
-            wall_obj = bd.Wall(wall, self)
+            wall_obj = bd.Wall(wall, self, 3)
             self.wall_objs[wall] = wall_obj
             map[wall[0]][wall[1]] = pt.WALL_LEFT
         for wall in self.walls_right:
-            wall_obj = bd.Wall(wall, self)
+            wall_obj = bd.Wall(wall, self, 3)
             self.wall_objs[wall] = wall_obj
             map[wall[0]][wall[1]] = pt.WALL_RIGHT
         for wall in self.walls_topright:
-            wall_obj = bd.Wall(wall, self)
+            wall_obj = bd.Wall(wall, self, 3)
             self.wall_objs[wall] = wall_obj
             map[wall[0]][wall[1]] = pt.WALL_TOPRIGHT
         for wall in self.walls_topleft:
-            wall_obj = bd.Wall(wall, self)
+            wall_obj = bd.Wall(wall, self, 3)
             self.wall_objs[wall] = wall_obj
             map[wall[0]][wall[1]] = pt.WALL_TOPLEFT
         for wall in self.walls_bottomright:
-            wall_obj = bd.Wall(wall, self)
+            wall_obj = bd.Wall(wall, self, 3)
             self.wall_objs[wall] = wall_obj
             map[wall[0]][wall[1]] = pt.WALL_BOTTOMRIGHT
         for wall in self.walls_bottomleft:
-            wall_obj = bd.Wall(wall, self)
+            wall_obj = bd.Wall(wall, self, 3)
             self.wall_objs[wall] = wall_obj
             map[wall[0]][wall[1]] = pt.WALL_BOTTOMLEFT
         for cannon in self.cannons:                                     # cannon is 2x2
-            cannon_obj = bd.Cannon(cannon, self)
+            cannon_obj = bd.Cannon(cannon, self, 3)
             self.cannon_objs[cannon] = cannon_obj
             map[cannon[0]][cannon[1]] = pt.CANNON + ":" + \
                 str(cannon[0]) + ":" + str(cannon[1])
@@ -96,7 +96,7 @@ class Village:
             map[cannon[0]+1][cannon[1]+1] = pt.CANNON + \
                 ":" + str(cannon[0]) + ":" + str(cannon[1])
         for wizard_tower in self.wizard_towers:                          # wizard tower is 1X1
-            wizard_tower_obj = bd.WizardTower(wizard_tower, self)
+            wizard_tower_obj = bd.WizardTower(wizard_tower, self, 3)
             self.wizard_tower_objs[wizard_tower] = wizard_tower_obj
             map[wizard_tower[0]][wizard_tower[1]] = pt.WIZARD_TOWER + \
                 ":" + str(wizard_tower[0]) + ":" + str(wizard_tower[1])
