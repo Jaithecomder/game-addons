@@ -103,7 +103,7 @@ class King:
         target.health -= attack
         if target.health <= 0:
             target.health = 0
-            target.destroy()
+            target.destroy(self)
 
     def specialAttack(self,V):
         if(self.alive == False):

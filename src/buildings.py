@@ -1,10 +1,10 @@
 import numpy as np
 import points as pt
 from characters import barbarians, dragons, balloons, archers, starchers, healers
-
+import king
 
 class Building:
-    def destroy(self):
+    def destroy(self, King=None):
         self.destroyed = True
         if self.type == 'wall':
             self.V.remove_wall(self)
@@ -13,6 +13,9 @@ class Building:
                 for trp in troops:
                     if abs(trp.position[0] - self.position[0]) <= 2 and abs(trp.position[1] - self.position[1]) <= 2:
                         trp.deal_damage(200)
+                if King != None:
+                    if abs(King.position[0] - self.position[0]) <= 2 and abs(King.position[1] - self.position[1]) <= 2:
+                        King.deal_damage(200)
         elif self.type == 'hut':
             self.V.remove_hut(self)
         elif self.type == 'cannon':
