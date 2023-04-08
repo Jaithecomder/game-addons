@@ -103,7 +103,7 @@ class King:
         target.health -= attack
         if target.health <= 0:
             target.health = 0
-            target.destroy(self)
+            target.destroy()
 
     def specialAttack(self,V):
         if(self.alive == False):
@@ -322,3 +322,7 @@ def getHero(hero):
         return spawnKing(pt.config['hero_pos'])
     elif(hero == 1):
         return spawnQueen(pt.config['hero_pos'])
+
+king = getHero(0)
+queen = getHero(1)
+heroes = [king, queen]

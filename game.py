@@ -53,7 +53,9 @@ if ch == 1:
     pt.hero = 0
 elif ch == 2:
     pt.hero = 1
-King = king.getHero(pt.hero)
+# King = king.getHero(pt.hero)
+King = king.heroes[pt.hero]
+king.heroes[(pt.hero + 1) % 2].alive = False
 os.system('clear')
 printMap(V)
 Phealth(showKingHealth(King.health))
