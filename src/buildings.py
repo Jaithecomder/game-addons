@@ -131,7 +131,7 @@ class WizardTower(Building):
         for starch in starchers:
             if starch.visible == True and (starch.position[0] - self.position[0])**2 + (starch.position[1] - self.position[1])**2 <= self.attack_radius**2:
                 self.isShooting = True
-                self.attack_target(starch)
+                self.attack_target(starch, 0)
                 return
 
         if King.alive == False:
