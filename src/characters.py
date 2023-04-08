@@ -937,17 +937,19 @@ def search_for_closest_troop(pos, King):
     flag = 0
     troops = barbarians + archers + starchers + dragons + balloons
     for trp in troops:
-        dist = abs(trp.position[0] - pos[0]) + abs(trp.position[1] - pos[1])
+        if trp.health < trp.max_health:
+            dist = abs(trp.position[0] - pos[0]) + abs(trp.position[1] - pos[1])
+            if(dist < closest_dist):
+                flag = 1
+                closest_dist = dist
+                closest_troop = trp.position
+
+    if King.health < King.max_health:
+        dist = abs(King.position[0] - pos[0]) + abs(King.position[1] - pos[1])
         if(dist < closest_dist):
             flag = 1
             closest_dist = dist
-            closest_troop = trp.position
-
-    dist = abs(King.position[0] - pos[0]) + abs(King.position[1] - pos[1])
-    if(dist < closest_dist):
-        flag = 1
-        closest_dist = dist
-        closest_troop = King.position
+            closest_troop = King.position
 
     if(flag == 0):
         return None
