@@ -659,9 +659,9 @@ class Healer:
         if(r + c <= 7):
             troops = barbarians + archers + starchers + dragons + balloons
             for trp in troops:
-                if trp.position[0] in range(pos[0] - 1, pos[0] + 2) and trp.position[1] in range(pos[1] - 1, pos[1] + 2):
+                if abs(trp.position[0] - pos[0]) + abs(trp.position[1] - pos[1]) <= self.radius:
                     self.heal_target(trp)
-            if King.position[0] in range(pos[0] - 1, pos[0] + 2) and King.position[1] in range(pos[1] - 1, pos[1] + 2):
+            if abs(King.position[0] - pos[0]) + abs(King.position[1] - pos[1]) <= self.radius:
                 self.heal_target(King)
         elif(r == 0):
             if(pos[1] > self.position[1]):

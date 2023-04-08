@@ -47,7 +47,23 @@
 - k : spawn at point 2
 - l : spawn at point 3
 
+### StealthArcher :
+
+- m : spawn at point 1
+- , : spawn at point 2
+- . : spawn at point 3
+
+### Healer :
+
+- ; : spawn at point 1
+- ' : spawn at point 2
+- [ : spawn at point 3
+
 q : Quit Game
+
+## Building Levels
+
+- The level of all buildings will be the same in a run, and it is calculated as follows : building_level = 2 * village_level - 1 
 
 ## Assumptions :
 
@@ -57,5 +73,8 @@ q : Quit Game
     - Archers : 7
     - Balloon : 5
     - Dragon : 3
+    - StealthArcher : 4
+    - Healer : 2
 - You have to choose the type of troop movement at start of the game.
 - You have to choose the hero after each level.
+- Healer has a heal AoE of radius 1 (manhattan distance)
